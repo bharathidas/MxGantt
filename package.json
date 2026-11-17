@@ -1,0 +1,86 @@
+{
+    "name": "mxgantt-web",
+    "widgetName": "MxGantt",
+    "version": "1.0.0",
+    "description": "An enterprise Gantt chart over a Mendix data source: zoomable timeline next to an editable task grid, groups and multi-project portfolios with summary bars and WBS numbers, typed dependencies (FS, SS, FF, SF) with lags, constraints, split tasks, critical path, up to ten named baselines with comparison, auto-scheduling on a working calendar, resource assignments with units, a resource histogram and levelling, cost and earned value with an S-curve, undo and redo, search and filters, drag and keyboard rescheduling written back to the objects, and PNG, CSV, Excel and MS Project export and import.",
+    "copyright": "© MX Techies 2026",
+    "license": "Apache-2.0",
+    "private": true,
+    "mxpackage": {
+        "name": "MxGantt",
+        "type": "widget",
+        "mpkName": "com.mxtechies.widget.web.MxGantt.mpk"
+    },
+    "packagePath": "com.mxtechies.widget.web",
+    "marketplace": {
+        "minimumMXVersion": "11.0.0",
+        "appName": "MxGantt"
+    },
+    "config": {
+        "projectPath": "../../",
+        "mendixHost": "http://localhost:8080",
+        "developmentPort": 3000
+    },
+    "engines": {
+        "node": "^22.18.0"
+    },
+    "scripts": {
+        "build": "pluggable-widgets-tools build:web",
+        "dev": "pluggable-widgets-tools start:web",
+        "lint": "pluggable-widgets-tools lint",
+        "lint:fix": "pluggable-widgets-tools lint:fix",
+        "test": "pluggable-widgets-tools test:unit:web",
+        "release": "pluggable-widgets-tools release:web",
+        "generate:texts": "node scripts/generate-texts.mjs",
+        "harness": "node harness/build.mjs && node harness/test.mjs && node harness/test-v23.mjs",
+        "licenses": "node scripts/check-licenses.mjs",
+        "generate:typings": "node scripts/generate-typings.mjs",
+        "sbom": "node scripts/make-sbom.mjs"
+    },
+    "dependencies": {
+        "classnames": "^2.5.1"
+    },
+    "devDependencies": {
+        "@mendix/pluggable-widgets-tools": "11.12.1",
+        "@types/big.js": "^6.2.2",
+        "esbuild": "^0.25.12",
+        "puppeteer-core": "^24.43.1",
+        "typescript": "5.9.3"
+    },
+    "overrides": {
+        "zip-a-folder": "6.1.4",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
+        "@types/react": "19.0.0",
+        "@types/react-dom": "19.0.0",
+        "typescript": "5.9.3"
+    },
+    "resolutions": {
+        "zip-a-folder": "6.1.4",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
+        "@types/react": "19.0.0",
+        "@types/react-dom": "19.0.0",
+        "typescript": "5.9.3"
+    },
+    "keywords": [
+        "mendix",
+        "pluggable-widget",
+        "gantt",
+        "timeline",
+        "schedule",
+        "project",
+        "dependencies",
+        "critical-path",
+        "baseline",
+        "resource",
+        "workload",
+        "wbs",
+        "earned-value",
+        "resource-levelling",
+        "portfolio",
+        "ms-project",
+        "split-tasks",
+        "constraints"
+    ]
+}

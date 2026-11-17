@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MxGantt harness</title>
+<link rel="stylesheet" href="dist/entry.css" />
+<style>body { font-family: system-ui, sans-serif; margin: 16px; background: #f5f7fb; }</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+    // ?prod=1 loads the production React build (as in Mendix apps) for performance measurements.
+    var bundle = document.createElement("script");
+    bundle.src = /[?&]prod=1/.test(location.search) ? "dist/prod/entry.js" : "dist/entry.js";
+    document.body.appendChild(bundle);
+</script>
+</body>
+</html>
