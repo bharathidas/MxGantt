@@ -113,14 +113,15 @@ function HealthStripView(props: HealthStripProps): ReactElement {
             <div className="mxgantt-health-counts">
                 {health.actual !== undefined && (
                     <span className={classNames("mxgantt-health-count", { "is-bad": health.behind > 0 })}>
-                        <strong>{health.behind}</strong> {texts.healthBehind}
+                        {/* Label first, so the plural label reads right for any count ("Critical tasks: 1"). */}
+                        {texts.healthBehind}: <strong>{health.behind}</strong>
                     </span>
                 )}
                 <span className="mxgantt-health-count">
-                    <strong>{health.critical}</strong> {texts.healthCritical}
+                    {texts.healthCritical}: <strong>{health.critical}</strong>
                 </span>
                 <span className={classNames("mxgantt-health-count", { "is-bad": health.missedDeadlines > 0 })}>
-                    <strong>{health.missedDeadlines}</strong> {texts.healthDeadlines}
+                    {texts.healthDeadlines}: <strong>{health.missedDeadlines}</strong>
                 </span>
             </div>
         </section>

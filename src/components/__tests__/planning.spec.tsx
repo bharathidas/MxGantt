@@ -133,6 +133,10 @@ describe("2.2 planning aids", () => {
             jest.advanceTimersByTime(1000);
         });
         expect(strip.textContent).toContain("Missed deadlines");
+        // Label before the count, so "Critical tasks: 1" reads right for any number.
+        const counts = Array.from(strip.querySelectorAll(".mxgantt-health-count")).map(c => c.textContent);
+        expect(counts.some(c => /^Critical tasks: \d+$/.test(c ?? ""))).toBe(true);
+        expect(counts.some(c => /^Missed deadlines: \d+$/.test(c ?? ""))).toBe(true);
         expect(strip.querySelector(".mxgantt-health-value.is-date")).toBeTruthy();
         expect(strip.textContent).toContain("4 days late");
         expect(strip.querySelector(".mxgantt-sr")?.textContent).toContain("schedule index");
