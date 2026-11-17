@@ -631,12 +631,17 @@ export function getPreview(
         (...children: StructurePreviewProps[]): ContainerProps =>
             container({ borders: true, ...props })(...children);
 
+    // Studio Pro gives every cell the same share of the width, so long column lists are cut to "...".
+    // Show the first columns and one "+N more" cell instead (all of them stay listed in the Columns property).
+    const MAX_COLUMNS = 4;
     const all = values.showGrid ? previewColumns(values) : [];
     const lead = all.filter(column => column.key === "wbs");
-    const rest = all.filter(column => column.key !== "wbs");
+    const others = all.filter(column => column.key !== "wbs");
+    const rest = others.slice(0, Math.max(0, MAX_COLUMNS - lead.length));
+    const more = others.length - rest.length;
     const taskCaption = `Task${values.nameSortable ? " ⇅" : ""}`;
     const taskPlaceholder = `[${values.taskName ? values.taskName : "Task name"}]`;
-    const timelineGrow = Math.max(3, Math.round((rest.length + lead.length + 2) * 0.8));
+    const timelineGrow = 2;
 
     const titleBar = rowLayout({
         columnSize: "fixed",
@@ -650,7 +655,7 @@ export function getPreview(
               rowLayout({ columnSize: "fixed", borders: true, padding: 6 })(
                   container({ grow: 3 })(
                       text({ fontSize: 10, fontColor: palette.text.secondary })(
-                          values.showFilter ? "🔍 Search tasks" : ""
+                          values.showFilter ? "Search tasks" : ""
                       )
                   ),
                   container({ grow: 2 })(
@@ -680,10 +685,9 @@ export function getPreview(
         cell({ grow: 1, padding: 8, backgroundColor: hidden ? palette.background.containerFill : undefined })(
             text({ fontSize: 10, fontColor: palette.text.secondary })(content)
         );
-    const data = (column: (typeof all)[number]): StructurePreviewProps => {
-        const child = dataCell(column.placeholder, column.hidden);
-        return column.object ? { type: "Selectable", object: column.object, child, grow: 1 } : child;
-    };
+    // Only the header cell is Selectable (like AG Grid): Studio Pro drops the whole structure preview
+    // when the same Columns item is wrapped in Selectable more than once.
+    const data = (column: (typeof all)[number]): StructurePreviewProps => dataCell(column.placeholder, column.hidden);
 
     const timelineHeader = cell({ grow: timelineGrow, padding: 8, backgroundColor: palette.background.topbarStandard })(
         text({ bold: true, fontSize: 10, fontColor: palette.text.primary })("Timeline")
@@ -699,6 +703,7 @@ export function getPreview(
         ...lead.map(header),
         ...(values.showGrid ? [headerCell(taskCaption, false)] : []),
         ...rest.map(header),
+        ...(more > 0 ? [headerCell(`+${more} more`, true)] : []),
         timelineHeader
     );
     const dataRows = [0, 1, 2, 3].map(row =>
@@ -706,6 +711,7 @@ export function getPreview(
             ...lead.map(data),
             ...(values.showGrid ? [dataCell(taskPlaceholder, false)] : []),
             ...rest.map(data),
+            ...(more > 0 ? [dataCell("", true)] : []),
             timelineCell(row)
         )
     );

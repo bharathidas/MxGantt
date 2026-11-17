@@ -20,14 +20,14 @@
                 </property>
                 <property key="taskCode" type="textTemplate" dataSource="tasks" required="false">
                     <caption>Code</caption>
-                    <description>Optional short code shown before the name in the task list, such as a project number (1.3). Searched like the name.</description>
+                    <description>Optional short code shown before the name in the task list, such as a project number. Searched like the name.</description>
                     <translations>
                         <translation lang="en_US"></translation>
                     </translations>
                 </property>
                 <property key="taskSubtitle" type="textTemplate" dataSource="tasks" required="false">
                     <caption>Second line</caption>
-                    <description>Optional smaller text under the name in the task list, such as the project manager and a grade (1.3). With a second line rows are at least 52 pixels high. Searched like the name.</description>
+                    <description>Optional smaller text under the name in the task list, such as the project manager and a grade. With a second line rows are at least 52 pixels high. Searched like the name.</description>
                     <translations>
                         <translation lang="en_US"></translation>
                     </translations>
@@ -85,7 +85,7 @@
                 </property>
                 <property key="stateAttr" type="attribute" dataSource="tasks" required="false">
                     <caption>Status</caption>
-                    <description>Optional status of the task (1.3), such as an enumeration OnTrack, AtRisk, Short. Each value listed in Status colours gives the bar that colour (before Colour) and, with a legend text, a line in the legend under the chart.</description>
+                    <description>Optional status of the task, such as an enumeration OnTrack, AtRisk, Short. Each value listed in Status colours gives the bar that colour (before Colour) and, with a legend text, a line in the legend under the chart.</description>
                     <attributeTypes>
                         <attributeType name="Enum" />
                         <attributeType name="String" />
@@ -160,21 +160,21 @@
                 </property>
                 <property key="assignmentsAttr" type="attribute" dataSource="tasks" required="false">
                     <caption>Assignments</caption>
-                    <description>Optional resources with units (2.3), such as Ann:50, Bob for Ann half time and Bob full time (100 when no number is given). Used by the resource usage panel, levelling and costs instead of Assigned to, and editable in a Resources column with Inline editing.</description>
+                    <description>Optional resources with units, such as Ann:50, Bob for Ann half time and Bob full time (100 when no number is given). Used by the resource usage panel, levelling and costs instead of Assigned to, and editable in a Resources column with Inline editing.</description>
                     <attributeTypes>
                         <attributeType name="String" />
                     </attributeTypes>
                 </property>
                 <property key="segmentsAttr" type="attribute" dataSource="tasks" required="false">
                     <caption>Segments</caption>
-                    <description>Optional String attribute (unlimited length) for split tasks (2.3): the work segments as working days after the start, such as 0-2, 4-7. The widget writes it when users split a task, drag a segment or join the segments; empty means the task is not split.</description>
+                    <description>Optional String attribute (unlimited length) for split tasks: the work segments as working days after the start, such as 0-2, 4-7. The widget writes it when users split a task, drag a segment or join the segments; empty means the task is not split.</description>
                     <attributeTypes>
                         <attributeType name="String" />
                     </attributeTypes>
                 </property>
                 <property key="constraintTypeAttr" type="attribute" dataSource="tasks" required="false">
                     <caption>Constraint type</caption>
-                    <description>Optional constraint (2.3): ASAP, ALAP, SNET, SNLT, FNET, FNLT, MSO or MFO, the long names (Start no earlier than) or MS Project numbers 0-7; enumeration keys or captions both work. Auto-scheduling and Schedule plan honour it; broken constraints are flagged.</description>
+                    <description>Optional constraint: ASAP, ALAP, SNET, SNLT, FNET, FNLT, MSO or MFO, the long names (Start no earlier than) or MS Project numbers 0-7; enumeration keys or captions both work. Auto-scheduling and Schedule plan honour it; broken constraints are flagged.</description>
                     <attributeTypes>
                         <attributeType name="String" />
                         <attributeType name="Enum" />
@@ -198,14 +198,14 @@
                 </property>
                 <property key="baselinesAttr" type="attribute" dataSource="tasks" required="false">
                     <caption>Baselines (JSON)</caption>
-                    <description>Optional String attribute (unlimited length) holding up to ten named baselines per task as JSON (2.3). Adds a Baselines toolbar button: choose which baseline the chart shows, compare two, and save or delete baselines. Baseline start and Baseline end keep working as the baseline called Baseline (attributes).</description>
+                    <description>Optional String attribute (unlimited length) holding up to ten named baselines per task as JSON. Adds a Baselines toolbar button: choose which baseline the chart shows, compare two, and save or delete baselines. Baseline start and Baseline end keep working as the baseline called Baseline (attributes).</description>
                     <attributeTypes>
                         <attributeType name="String" />
                     </attributeTypes>
                 </property>
                 <property key="projectText" type="textTemplate" dataSource="tasks" required="false">
                     <caption>Project</caption>
-                    <description>Optional project of the task for the portfolio view (2.3), usually the name over an association such as Task_Project/Project/Name. With a project, every project gets a collapsible summary row with its groups and tasks under it, and dependencies may cross projects.</description>
+                    <description>Optional project of the task for the portfolio view, usually the name over an association such as Task_Project/Project/Name. With a project, every project gets a collapsible summary row with its groups and tasks under it, and dependencies may cross projects.</description>
                     <translations>
                         <translation lang="en_US"></translation>
                     </translations>
@@ -235,13 +235,13 @@
                 </property>
                 <property key="scheduleButton" type="boolean" defaultValue="false">
                     <caption>Schedule plan button</caption>
-                    <description>A Schedule plan toolbar button (2.3) that places every task with predecessors as early as its links, lags, constraint and the calendar allow (and as late as possible tasks as late as allowed), shows the result on the chart and applies it as one undo step. Needs Key and Depends on.</description>
+                    <description>A Schedule plan toolbar button that places every task with predecessors as early as its links, lags, constraint and the calendar allow (and as late as possible tasks as late as allowed), shows the result on the chart and applies it as one undo step. Needs Key and Depends on.</description>
                 </property>
             </propertyGroup>
             <propertyGroup caption="Resources and cost">
                 <property key="resources" type="datasource" isList="true" required="false">
                     <caption>Resources</caption>
-                    <description>Optional list of resources (people, teams, machines) with their maximum units and cost rate (2.3). Resources named in Assignments that are not in this list count as one person (100%) without cost.</description>
+                    <description>Optional list of resources (people, teams, machines) with their maximum units and cost rate. Resources named in Assignments that are not in this list count as one person (100%) without cost.</description>
                 </property>
                 <property key="resourceNameAttr" type="attribute" dataSource="resources" required="false">
                     <caption>Resource name</caption>
@@ -299,7 +299,7 @@
             <propertyGroup caption="MS Project import">
                 <property key="onImport" type="action" required="false">
                     <caption>On import</caption>
-                    <description>Adds an Import MS Project toolbar button (2.3). The chosen Microsoft Project XML file is read in the browser, previewed, and handed over as JSON in the attribute below; this action then imports it, typically a microflow with an Import with mapping. The widget never creates objects itself.</description>
+                    <description>Adds an Import MS Project toolbar button. The chosen Microsoft Project XML file is read in the browser, previewed, and handed over as JSON in the attribute below; this action then imports it, typically a microflow with an Import with mapping. The widget never creates objects itself.</description>
                 </property>
                 <property key="importJsonAttr" type="attribute" required="false">
                     <caption>Import: JSON</caption>
@@ -472,7 +472,7 @@
                 </property>
                 <property key="todayStyle" type="enumeration" defaultValue="line">
                     <caption>Today line style</caption>
-                    <description>Line: a solid line. Dashed with label: a dashed line with the Today text at the top (1.3).</description>
+                    <description>Line: a solid line. Dashed with label: a dashed line with the Today text at the top.</description>
                     <enumerationValues>
                         <enumerationValue key="line">Line</enumerationValue>
                         <enumerationValue key="labelled">Dashed with label</enumerationValue>
@@ -484,7 +484,7 @@
                 </property>
                 <property key="look" type="enumeration" defaultValue="standard">
                     <caption>Look</caption>
-                    <description>Portfolio (1.3): slim bars in tall rows, group headings in capitals without summary bars, and quieter bar labels. Made for a timeline of projects rather than a detailed plan.</description>
+                    <description>Portfolio: slim bars in tall rows, group headings in capitals without summary bars, and quieter bar labels. Made for a timeline of projects rather than a detailed plan.</description>
                     <enumerationValues>
                         <enumerationValue key="standard">Standard</enumerationValue>
                         <enumerationValue key="portfolio">Portfolio</enumerationValue>
@@ -492,7 +492,7 @@
                 </property>
                 <property key="barLabel" type="enumeration" defaultValue="name">
                     <caption>Bar label</caption>
-                    <description>The text after each bar. Finish and progress shows the end date in Bar label date format and the percentage done, such as 05.2027 · 45 % (1.3). Custom uses Bar label text.</description>
+                    <description>The text after each bar. Finish and progress shows the end date in Bar label date format and the percentage done, such as 05.2027 · 45 %. Custom uses Bar label text.</description>
                     <enumerationValues>
                         <enumerationValue key="name">Name and progress</enumerationValue>
                         <enumerationValue key="finishProgress">Finish and progress</enumerationValue>
@@ -513,7 +513,7 @@
                 </property>
                 <property key="baselineStyle" type="enumeration" defaultValue="bar">
                     <caption>Baseline style</caption>
-                    <description>Bar: a thin bar under the task. Dashed outline: a dashed frame around the baseline dates, so a late task sticks out of its frame (1.3).</description>
+                    <description>Bar: a thin bar under the task. Dashed outline: a dashed frame around the baseline dates, so a late task sticks out of its frame.</description>
                     <enumerationValues>
                         <enumerationValue key="bar">Bar</enumerationValue>
                         <enumerationValue key="outline">Dashed outline</enumerationValue>
@@ -521,7 +521,7 @@
                 </property>
                 <property key="deadlineStyle" type="enumeration" defaultValue="flag">
                     <caption>Deadline style</caption>
-                    <description>Flag: a thin line with a flag. Diamond: a diamond on the row, such as a business need date (1.3).</description>
+                    <description>Flag: a thin line with a flag. Diamond: a diamond on the row, such as a business need date.</description>
                     <enumerationValues>
                         <enumerationValue key="flag">Flag</enumerationValue>
                         <enumerationValue key="diamond">Diamond</enumerationValue>
@@ -529,7 +529,7 @@
                 </property>
                 <property key="barLegend" type="boolean" defaultValue="false">
                     <caption>Bar legend</caption>
-                    <description>Explains the bars under the chart (1.3): progress, remaining, baseline and deadline (texts Legend progress, Legend remaining, Legend baseline and Legend deadline) and each Status colour that has a legend text. The progress and remaining swatches use the first Status colour, so list the normal colour first.</description>
+                    <description>Explains the bars under the chart: progress, remaining, baseline and deadline (texts Legend progress, Legend remaining, Legend baseline and Legend deadline) and each Status colour that has a legend text. The progress and remaining swatches use the first Status colour, so list the normal colour first.</description>
                 </property>
                 <property key="showDependencies" type="boolean" defaultValue="true">
                     <caption>Dependency arrows</caption>
@@ -611,19 +611,19 @@
                 </property>
                 <property key="defaultBaseline" type="string" required="false">
                     <caption>Baseline shown</caption>
-                    <description>Name of the named baseline the chart shows when it opens (2.3); empty shows Baseline start / end when set, otherwise the latest saved baseline. Users can pick another in the Baselines panel.</description>
+                    <description>Name of the named baseline the chart shows when it opens; empty shows Baseline start / end when set, otherwise the latest saved baseline. Users can pick another in the Baselines panel.</description>
                 </property>
                 <property key="showEarnedValue" type="boolean" defaultValue="false">
                     <caption>Earned value panel</caption>
-                    <description>A panel under the chart (2.3) with budget, planned value, earned value, actual cost, the variances, CPI, SPI, estimate at and to completion and variance at completion at the status date, and an S-curve chart. Needs costs: Fixed cost or resources with cost rates.</description>
+                    <description>A panel under the chart with budget, planned value, earned value, actual cost, the variances, CPI, SPI, estimate at and to completion and variance at completion at the status date, and an S-curve chart. Needs costs: Fixed cost or resources with cost rates.</description>
                 </property>
                 <property key="costColumns" type="boolean" defaultValue="false">
                     <caption>Cost columns</caption>
-                    <description>Cost and earned value columns in the task list (2.3): Cost, EV, CPI and SPI are shown, BAC, PV, AC, CV, SV, EAC, ETC and VAC can be added with the column chooser. Groups and projects show their totals. Only used while Columns is empty; otherwise add Cost and earned value columns there.</description>
+                    <description>Cost and earned value columns in the task list: Cost, EV, CPI and SPI are shown, BAC, PV, AC, CV, SV, EAC, ETC and VAC can be added with the column chooser. Groups and projects show their totals. Only used while Columns is empty; otherwise add Cost and earned value columns there.</description>
                 </property>
                 <property key="showPortfolio" type="boolean" defaultValue="false">
                     <caption>Portfolio summary</caption>
-                    <description>With Project set, a table above the chart (2.3) with each project's health: finish and its slip against the baseline, progress, SPI and CPI, critical, behind, missed deadlines, over-allocated tasks and cross-project links, rated on track, at risk or off track.</description>
+                    <description>With Project set, a table above the chart with each project's health: finish and its slip against the baseline, progress, SPI and CPI, critical, behind, missed deadlines, over-allocated tasks and cross-project links, rated on track, at risk or off track.</description>
                 </property>
             </propertyGroup>
             <propertyGroup caption="Layout">
@@ -659,7 +659,7 @@
             <propertyGroup caption="Task list">
                 <property key="gridColumns" type="object" isList="true" required="false">
                     <caption>Columns</caption>
-                    <description>The task list columns after Task name, in this order (1.2). Task name is always shown first and cannot be removed. Pick built-in columns such as Start, End and Duration or show any attribute of the task. While this list is empty the chart shows the classic columns, set with Extra columns, WBS numbers, Variance column and Cost columns.</description>
+                    <description>The task list columns after Task name, in this order. Task name is always shown first and cannot be removed. Pick built-in columns such as Start, End and Duration or show any attribute of the task. While this list is empty the chart shows the classic columns, set with Extra columns, WBS numbers, Variance column and Cost columns.</description>
                     <properties>
                         <propertyGroup caption="Column">
                             <property key="gcType" type="enumeration" defaultValue="attribute">
@@ -807,7 +807,7 @@
                 </property>
                 <property key="nameSortable" type="boolean" defaultValue="false">
                     <caption>Sortable task name</caption>
-                    <description>Users click the Task header to sort the tasks by name, ascending then descending, then back to the data source order (1.2).</description>
+                    <description>Users click the Task header to sort the tasks by name, ascending then descending, then back to the data source order.</description>
                 </property>
                 <property key="columns" type="object" isList="true" required="false">
                     <caption>Extra columns</caption>
@@ -876,11 +876,11 @@
             <propertyGroup caption="Resources">
                 <property key="showResources" type="boolean" defaultValue="false">
                     <caption>Resource usage panel</caption>
-                    <description>A histogram under the chart (2.3) with each resource's load as a share of its maximum units per day (or busiest day per week), over-allocated days in red and over-allocated task bars outlined. Clicking a resource highlights its tasks. Uses Assignments, or Assigned to at 100%.</description>
+                    <description>A histogram under the chart with each resource's load as a share of its maximum units per day (or busiest day per week), over-allocated days in red and over-allocated task bars outlined. Clicking a resource highlights its tasks. Uses Assignments, or Assigned to at 100%.</description>
                 </property>
                 <property key="resourceLeveling" type="boolean" defaultValue="false">
                     <caption>Resource levelling</caption>
-                    <description>A Level resources toolbar button (2.3) that delays tasks until no resource is over-allocated: tasks with total float move first, higher priorities stay, started and read-only tasks never move. The result is previewed on the chart and applied as one undo step.</description>
+                    <description>A Level resources toolbar button that delays tasks until no resource is over-allocated: tasks with total float move first, higher priorities stay, started and read-only tasks never move. The result is previewed on the chart and applied as one undo step.</description>
                 </property>
                 <property key="showWorkload" type="boolean" defaultValue="false">
                     <caption>Workload panel</caption>

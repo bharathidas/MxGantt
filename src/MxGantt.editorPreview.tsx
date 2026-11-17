@@ -59,25 +59,28 @@ export function preview(props: MxGanttPreviewProps): ReactElement {
     return (
         <div className={`mxgantt ${props.theme === "dark" ? "mxgantt--dark" : ""} ${props.className ?? ""}`}>
             {props.showToolbar && (
+                // Same markup as the runtime toolbar: the toolbar stacks rows, each row lays its items out in a line.
                 <div className="mxgantt-toolbar">
-                    <div className="mxgantt-segment">
-                        {["Day", "Week", "Month", "Quarter"].map(label => (
-                            <span
-                                key={label}
-                                className="mxgantt-button"
-                                aria-pressed={label.toLowerCase() === props.zoom ? "true" : "false"}
-                            >
-                                {label}
-                            </span>
-                        ))}
+                    <div className="mxgantt-toolbar-row">
+                        <div className="mxgantt-segment">
+                            {["Day", "Week", "Month", "Quarter", "Year"].map(label => (
+                                <span
+                                    key={label}
+                                    className="mxgantt-button"
+                                    aria-pressed={label.toLowerCase() === props.zoom ? "true" : "false"}
+                                >
+                                    {label}
+                                </span>
+                            ))}
+                        </div>
+                        <span className="mxgantt-button">Today</span>
                     </div>
-                    <span className="mxgantt-button">Today</span>
-                </div>
-            )}
-            {props.showToolbar && props.showFilter && (
-                <div className="mxgantt-toolbar">
-                    <span className="mxgantt-search">Search tasks</span>
-                    <span className="mxgantt-button mxgantt-chip">Late only</span>
+                    {props.showFilter && (
+                        <div className="mxgantt-toolbar-row mxgantt-filterbar">
+                            <span className="mxgantt-search">Search tasks</span>
+                            <span className="mxgantt-button mxgantt-chip">Late only</span>
+                        </div>
+                    )}
                 </div>
             )}
             <div className="mxgantt-body" style={{ height: 52 + ROWS.length * rh + 8 }}>

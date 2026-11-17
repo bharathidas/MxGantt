@@ -172,6 +172,34 @@ describe("Studio Pro previews (1.2)", () => {
         expect(JSON.stringify(preview)).toContain("Timeline");
     });
 
+    it("shows at most four columns in structure mode, then a +N more cell", () => {
+        const items = Array.from({ length: 10 }, (_, index) =>
+            column({ gcAttribute: `MyModule.Task.A${index}`, gcCaption: `A${index}` })
+        );
+        const json = JSON.stringify(getPreview(values({ gridColumns: items }), false, [11, 12, 1]));
+        expect(json).toContain("A3");
+        expect(json).not.toContain("A4");
+        expect(json).toContain("+6 more");
+        expect(json).not.toContain("🔍");
+    });
+
+    it("wraps each Columns item in Selectable exactly once (Studio Pro drops the preview otherwise)", () => {
+        const items = [column({ gcType: "start" }), column({ gcAttribute: "MyModule.Task.Budget", gcCaption: "Budget" })];
+        const preview = getPreview(values({ gridColumns: items }), false, [11, 12, 1]);
+        const found: object[] = [];
+        const walk = (node: { type?: string; object?: object; child?: unknown; children?: unknown[] }): void => {
+            if (node.type === "Selectable" && node.object) {
+                found.push(node.object);
+            }
+            if (node.child) {
+                walk(node.child as typeof node);
+            }
+            (node.children || []).forEach(child => walk(child as typeof node));
+        };
+        walk(preview as unknown as Parameters<typeof walk>[0]);
+        expect(found).toEqual(items);
+    });
+
     it("works in dark mode and without the task list", () => {
         const preview = getPreview(values({ showGrid: false }), true);
         expect(JSON.stringify(preview)).not.toContain("Task");
